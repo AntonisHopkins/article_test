@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CenterComponent } from './components/center/center.component';
 import { ArticleComponent } from './components/article/article.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ArticleComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
