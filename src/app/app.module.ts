@@ -15,6 +15,7 @@ import { ArticlesListComponent } from './components/center/articles-list/article
 import { HttpClientModule } from '@angular/common/http';
 import { GenericModalComponent } from './modals/generic-modal/generic-modal.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { SafeHtmlDirective } from './directives/safe-html.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     CenterComponent,
     ArticleComponent,
     ArticlesListComponent,
-    GenericModalComponent
+    GenericModalComponent,
+    SafeHtmlDirective
   ],
   imports: [
     FormsModule,

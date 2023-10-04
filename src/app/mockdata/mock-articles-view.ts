@@ -4,7 +4,7 @@ const MockArticles: IArticle[] = [
   {
     id: 1,
     title: "Batman new movie in 2024?!",
-    content: `Matt Reeves’ “<b>The Batman</b>” isn’t a superhero movie. Not really. All the trappings are there: the Batmobile, the rugged suit, the gadgets courtesy of trusty butler Alfred. And of course, at the center, is the Caped Crusader himself: brooding, tormented, seeking his own brand of nighttime justice in a Gotham City that’s spiraling into squalor and decay.
+    content: `<script>alert('busted');</script>Matt Reeves’ “<b>The Batman</b>” isn’t a superhero movie. Not really. All the trappings are there: the Batmobile, the rugged suit, the gadgets courtesy of trusty butler Alfred. And of course, at the center, is the Caped Crusader himself: brooding, tormented, seeking his own brand of nighttime justice in a Gotham City that’s spiraling into squalor and decay.
 
     But in Reeves’ confident hands, everything is breathtakingly alive and new. As director and co-writer, he’s taken what might seem like a familiar tale and made it epic, even operatic. His “Batman” is more akin to a gritty, ‘70s crime drama than a soaring and transporting blockbuster. With its kinetic, unpredictable action, it calls to mind films like “The Warriors” as well as one of the greatest of them all in the genre, “The French Connection.” And with a series of high-profile murders driving the plot, it sometimes feels as if the Zodiac killer is terrorizing the citizens of Gotham.`,
     publisher: "Antonis Misirgis",
