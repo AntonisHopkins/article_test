@@ -1,0 +1,13 @@
+<div class="row mt-2" *ngFor="let article of articles">
+  <div class="d-flex col-sm-12">
+    <div class="col-5 ">
+      <img class="col-12" src="{{article.thumbnail}}" >
+    </div>
+    <div class="col-8 ms-2">
+      <h2>{{article.title}}</h2>
+      <span class="col-12 d-inline-block"><b>publisher: </b>{{article.publishDate.toLocaleString()}}</span>
+      <span class="col-12 mt-2 d-inline-block"><b>Date: </b>{{article.publishDate.toLocaleString()}}</span>
+      <span class="col-12 mt-2 d-inline-block article-description"><b>description: </b>{{article.content}}</span>
+    </div>
+  </div>
+</div>

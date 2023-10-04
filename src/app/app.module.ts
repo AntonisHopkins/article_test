@@ -8,9 +8,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { PlaceholderComponent } from './components/placeholder/placeholder.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CenterComponent } from './components/center/center.component';
-import { ArticleComponent } from './components/article/article.component';
+import { ArticleComponent } from './components/center/article/article.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { ArticlesListComponent } from './components/center/articles-list/articles-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { GenericModalComponent } from './modals/generic-modal/generic-modal.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,14 +23,17 @@ import { FormsModule } from '@angular/forms';
     PlaceholderComponent,
     FooterComponent,
     CenterComponent,
-    ArticleComponent
+    ArticleComponent,
+    ArticlesListComponent,
+    GenericModalComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
