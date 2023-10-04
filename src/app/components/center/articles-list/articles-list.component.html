@@ -7,7 +7,10 @@
       <h2>{{article.title}}</h2>
       <span class="col-12 d-inline-block"><b>publisher: </b>{{article.publishDate.toLocaleString()}}</span>
       <span class="col-12 mt-2 d-inline-block"><b>Date: </b>{{article.publishDate.toLocaleString()}}</span>
-      <span class="col-12 mt-2 d-inline-block article-description"><b>description: </b>{{article.content}}</span>
+      <span class="col-12 mt-2 d-inline-block article-description">
+        <b>description: </b> 
+        <span [innerHTML]="article.content"></span>
+      </span>
     </div>
   </div>
 </div>

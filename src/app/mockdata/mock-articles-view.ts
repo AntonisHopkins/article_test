@@ -4,7 +4,7 @@ const MockArticles: IArticle[] = [
   {
     id: 1,
     title: "Batman new movie in 2024?!",
-    content: `Matt Reeves’ “<b>The Batman<b>” isn’t a superhero movie. Not really. All the trappings are there: the Batmobile, the rugged suit, the gadgets courtesy of trusty butler Alfred. And of course, at the center, is the Caped Crusader himself: brooding, tormented, seeking his own brand of nighttime justice in a Gotham City that’s spiraling into squalor and decay.
+    content: `Matt Reeves’ “<b>The Batman</b>” isn’t a superhero movie. Not really. All the trappings are there: the Batmobile, the rugged suit, the gadgets courtesy of trusty butler Alfred. And of course, at the center, is the Caped Crusader himself: brooding, tormented, seeking his own brand of nighttime justice in a Gotham City that’s spiraling into squalor and decay.
 
     But in Reeves’ confident hands, everything is breathtakingly alive and new. As director and co-writer, he’s taken what might seem like a familiar tale and made it epic, even operatic. His “Batman” is more akin to a gritty, ‘70s crime drama than a soaring and transporting blockbuster. With its kinetic, unpredictable action, it calls to mind films like “The Warriors” as well as one of the greatest of them all in the genre, “The French Connection.” And with a series of high-profile murders driving the plot, it sometimes feels as if the Zodiac killer is terrorizing the citizens of Gotham.`,
     publisher: "Antonis Misirgis",
@@ -14,7 +14,7 @@ const MockArticles: IArticle[] = [
   {
     id: 2,
     title: "LOTR: Remastered end of 2023?",
-    content: "This is a content for lord of the rings",
+    content: `<span class="lead-in-text-callout">Look, I see</span> why Peter Jackson did it. Why he rereleased, in December of last year, his <a href="https://www.wired.com/tag/the-lord-of-the-rings/" data-uri="06aaa6b106b533f83ca79f96ded371cf"><em>Lord of the Rings</em></a> trilogy, along with <em>The Nasty Hobbitses</em>—as I like to call them, channeling Gollum—in so-called “4K Ultra HD” (a redundancy). It’s a very 21st-century-filmmaker thing to do, this remastering business. Enrich the colors, sharpen the images, and your films hold up down through the ages. It’s practically a moral obligation, a question of clarity, of being clear, and if you <em>can</em> clarify Legolas by pumping an extra 10 million pixels into his perfect Elven pores, which comes out to something like 100 billion photons, all twinkling immortally through the cosmic sweep of spacetime, why then, <em>shouldn’t</em> you?`,
     publisher: "Antonis Misirgis",
     publishDate: new Date(),
     thumbnail: "https://images7.alphacoders.com/648/648145.jpg",
