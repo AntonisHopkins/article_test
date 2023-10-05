@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import { Strings } from 'src/app/types/strings';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent implements OnInit, OnDestroy {
   articleId: string = "";
   subscription$: Subscription = new Subscription();
   loading: boolean = true;
@@ -40,7 +40,9 @@ export class ArticleComponent implements OnInit {
     else  
       this.loading = false;
   }
-
+  ngOnDestroy(): void {
+      this.subscription$.unsubscribe();
+  }
   getArticleById():void{
     this.subscription$.add(this.apiService.getArticlesById(this.getArticlesByIdRequest()).subscribe({
       next: res => {
