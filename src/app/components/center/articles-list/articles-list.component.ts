@@ -1,5 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IArticle, IArticleView } from 'src/app/interfaces/IArticles';
+import { Strings } from 'src/app/types/strings';
 
 @Component({
   selector: 'app-articles-list',
@@ -9,10 +11,14 @@ import { IArticle, IArticleView } from 'src/app/interfaces/IArticles';
 export class ArticlesListComponent implements OnInit, OnDestroy {
   @Input() articles: IArticleView[] = [];
   
-  constructor() {
+  constructor(private router: Router) {
   }
   ngOnDestroy(): void {
   }
   ngOnInit(): void {
+  }
+
+  redirectToArticle(article: IArticleView){
+    this.router.navigate([Strings.ArticleRoute.replace(":id",article.id.toString())]);
   }
 }

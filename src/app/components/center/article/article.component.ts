@@ -1,10 +1,90 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
+import { IArticle, IArticleView, IGetArticlesByIdRequest, IGetArticlesByIdResponse } from 'src/app/interfaces/IArticles';
+import { MockArticleByIdResponse, MockArticlesResponse } from 'src/app/mockdata/mock-articles-view';
+import { GenericModalComponent } from 'src/app/modals/generic-modal/generic-modal.component';
+import { ApiService } from 'src/app/services/api.service';
+import { Strings } from 'src/app/types/strings';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss']
 })
-export class ArticleComponent {
+export class ArticleComponent implements OnInit {
+  articleId: string = "";
+  subscription$: Subscription = new Subscription();
+  loading: boolean = true;
+  article: IArticleView | null = null;
+  DEV_ENV: boolean = Strings.DEV_ENV;
+  
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private _modalService: NgbModal
 
+  ) 
+  {
+    this.subscription$.add(this.route.paramMap.subscribe((params: ParamMap) => {
+      let id = params.get('id');
+      this.articleId = id ? id : "";
+      // Now, this.articleId contains the value of the 'id' parameter from the route
+    }));
+  }
+  ngOnInit(): void {
+    console.log(this.articleId);
+    if(this.articleId)
+      this.getArticleById();
+    else  
+      this.loading = false;
+  }
+
+  getArticleById():void{
+    this.subscription$.add(this.apiService.getArticlesById(this.getArticlesByIdRequest()).subscribe({
+      next: res => {
+        console.log("res", res);
+        if(res && res.data && res.included)
+          this.transformToView(res);
+        this.loading = false;
+      },
+      error: (error) => {
+        if(this.DEV_ENV)
+          this.transformToView(MockArticleByIdResponse);
+        else
+          this.openModal();
+        this.loading = false;
+      }
+    }))
+  }
+
+  getArticlesByIdRequest(): IGetArticlesByIdRequest{
+    let request: IGetArticlesByIdRequest = {
+      id: this.articleId
+    }
+    return request;
+  }
+
+  transformToView(res: IGetArticlesByIdResponse): void{
+    let article: IArticleView = {
+      ...res.data,
+      publishDateStr: new Date(res.data.attributes.created).toLocaleString(),
+      publisher: ""
+    }
+    res.included.forEach(x => article.publisher += `${x.attributes.name} / ` )
+    article.publisher = article.publisher.slice(0, -3) 
+    this.article = article;
+  }
+
+  openModal(){
+    const modalRef = this._modalService.open(GenericModalComponent, {  });
+    modalRef.componentInstance.title = Strings.ArticlesErrorTitle;
+    modalRef.componentInstance.body = Strings.ArticlesErrorBody;
+    modalRef.result.then(
+      (res: boolean) => {
+        console.log("modal res",res);
+      }
+    )
+  }
 }

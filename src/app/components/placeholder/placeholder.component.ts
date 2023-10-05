@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./placeholder.component.scss']
 })
 export class PlaceholderComponent {
-
+  constructor() {
+   
+  }
+ 
 }
