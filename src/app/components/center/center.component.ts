@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, Subscription, debounceTime, delay } from 'rxjs';
 import { IGetArticlesByKeywordRequest, IArticle, IArticleView } from 'src/app/interfaces/IArticles';
-import MockArticlesView from 'src/app/mockdata/mock-articles-view';
+import MockArticlesView, { MockError } from 'src/app/mockdata/mock-articles-view';
 import { GenericModalComponent } from 'src/app/modals/generic-modal/generic-modal.component';
 import { ApiService } from 'src/app/services/api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -66,16 +66,19 @@ export class CenterComponent implements OnInit, OnDestroy {
         this.loading = false;
       },
       error: (error) => {
-        this.openModal();
+        if(Strings.DEV_ENV)
+          this.openModal();
+        else
+          this.openModal(error.title, error.detail);
         this.loading = false;
       }
     }));
   }
   
-  openModal(){
+  openModal(title:string = Strings.ArticlesErrorTitle, body:string = Strings.ArticlesErrorBody){
     const modalRef = this._modalService.open(GenericModalComponent, {  });
-    modalRef.componentInstance.title = Strings.ArticlesErrorTitle;
-    modalRef.componentInstance.body = Strings.ArticlesErrorBody;
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.body = body;
     modalRef.result.then(
       (res:boolean) => {
         console.log("modal res",res);

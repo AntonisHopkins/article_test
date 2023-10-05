@@ -103,6 +103,16 @@ const MockArticleByIdResponse: IGetArticlesByIdResponse =
   data: MockArticles[0], 
   included: MockIncluded
 }
-
+const MockError = {
+  errors: [
+    {
+      source: { 
+        parameter: "include" 
+      },
+      title:  "Invalid Query Parameter",
+      detail: "The resource does not have an `author` relationship path."
+    }
+  ]
+}
 export default MockArticlesView;
-export {MockArticlesResponse, MockArticleByIdResponse};
+export {MockArticlesResponse, MockArticleByIdResponse, MockError};

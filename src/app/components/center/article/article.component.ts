@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { IArticle, IArticleView, IGetArticlesByIdRequest, IGetArticlesByIdResponse } from 'src/app/interfaces/IArticles';
-import { MockArticleByIdResponse, MockArticlesResponse } from 'src/app/mockdata/mock-articles-view';
+import { MockArticleByIdResponse, MockArticlesResponse, MockError } from 'src/app/mockdata/mock-articles-view';
 import { GenericModalComponent } from 'src/app/modals/generic-modal/generic-modal.component';
 import { ApiService } from 'src/app/services/api.service';
 import { Strings } from 'src/app/types/strings';
@@ -50,10 +50,11 @@ export class ArticleComponent implements OnInit {
         this.loading = false;
       },
       error: (error) => {
-        if(this.DEV_ENV)
+        if(this.DEV_ENV){
           this.transformToView(MockArticleByIdResponse);
-        else
           this.openModal();
+        }else
+          this.openModal(error.title, error.details);
         this.loading = false;
       }
     }))
@@ -77,10 +78,10 @@ export class ArticleComponent implements OnInit {
     this.article = article;
   }
 
-  openModal(){
+  openModal(title:string = Strings.ArticlesErrorTitle, body:string = Strings.ArticlesErrorBody){
     const modalRef = this._modalService.open(GenericModalComponent, {  });
-    modalRef.componentInstance.title = Strings.ArticlesErrorTitle;
-    modalRef.componentInstance.body = Strings.ArticlesErrorBody;
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.body = body;
     modalRef.result.then(
       (res: boolean) => {
         console.log("modal res",res);
