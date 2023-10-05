@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Strings } from 'src/app/types/strings';
 
 
 @Component({
@@ -9,7 +11,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit, OnDestroy {
 
 
-  constructor() {
+  constructor(private router: Router) {
     
   }
   ngOnDestroy(): void {
@@ -17,6 +19,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     
+  }
+
+  redirectToLogin(){
+    this.router.navigate([Strings.LoginRoute])
   }
   
 }

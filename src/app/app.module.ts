@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { GenericModalComponent } from './modals/generic-modal/generic-modal.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { SafeHtmlDirective } from './directives/safe-html.directive';
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { SafeHtmlDirective } from './directives/safe-html.directive';
     ArticleComponent,
     ArticlesListComponent,
     GenericModalComponent,
-    SafeHtmlDirective
+    SafeHtmlDirective,
+    LoginComponent,
+    NotFoundComponent
   ],
   imports: [
     FormsModule,

@@ -1,4 +1,4 @@
-<div class="row mx-0 px-0">
+<div class="row mx-0 px-0" *ngIf="!routeIsActive">
   <div class="col-4"></div>
   <div class="col-4 mb-3">
     <form>
@@ -10,21 +10,27 @@
   <div class="col-md-4"></div>
 </div>
 
-<div class="row mx-0 px-0">
-  <div class="col-2"><p>leftsidebar</p></div>
-  <app-articles-list 
-    class="col-8 px-0 mx-0"
-    *ngIf="!routeIsActive && articles.length > 0"
-    [articles]="articles"
-  >
-  </app-articles-list>
-  <div class="col-2"><p>rightsidebar</p></div>
-  <router-outlet></router-outlet>
+  <div class="row mx-0 px-0" *ngIf="!routeIsActive">
+    <div class="col-2"><p>leftsidebar</p></div>
+    <app-articles-list 
+      class="col-8 px-0 mx-0"
+      *ngIf="articles.length > 0 && !loading"
+      [articles]="articles"
+    >
+    </app-articles-list>
+    <div class="col-2"><p>rightsidebar</p></div>
+  </div>
 
-</div>
+  <div class="row mx-0 px-0" *ngIf="routeIsActive">
+    <div class="col-2"><p>leftsidebar</p></div>
+    <div class="col-8 mx-0 px-0">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-2"><p>rightsidebar</p></div>
+  </div>
 
 
-<div class="loading" *ngIf="loading">
+<div class="loading loader-center text-success" *ngIf="loading" > 
   <div class="d-flex justify-content-center">
     <div class="spinner-border" role="status">
     </div>

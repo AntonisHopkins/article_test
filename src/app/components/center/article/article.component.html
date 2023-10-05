@@ -2,11 +2,19 @@
   <div class="col-sm-12 px-0 text-center" *ngIf="article">
     <h1>{{article.attributes.title}}</h1>
     <div class="row mt-5">
-      <span>publisher: {{article.publisher}} | {{article.publishDateStr}}</span>
+      <span>Writer: {{article.writer}} | {{article.publishDateStr}}</span>
     </div>
-      <img class="center" src="{{article.thumbnail}}" >
+      <img class="center mt-2" src="{{article.thumbnail}}" >
     <span class="col-10 mt-5 d-inline-block article-description">
       <span [appSafeHtml]="article.attributes.body"></span> 
     </span>
+  </div>
+</div>
+
+<div class="loading loader-center text-success" *ngIf="loading" > 
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+    </div>
+    <span>Loading...</span>
   </div>
 </div>

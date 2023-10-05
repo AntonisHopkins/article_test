@@ -70,10 +70,10 @@ export class ArticleComponent implements OnInit {
     let article: IArticleView = {
       ...res.data,
       publishDateStr: new Date(res.data.attributes.created).toLocaleString(),
-      publisher: ""
+      writer: ""
     }
-    res.included.forEach(x => article.publisher += `${x.attributes.name} / ` )
-    article.publisher = article.publisher.slice(0, -3) 
+    res.included.forEach(x => article.writer += `${x.attributes.name} / ` )
+    article.writer = article.writer.slice(0, -3) 
     this.article = article;
   }
 

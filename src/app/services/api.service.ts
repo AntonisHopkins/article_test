@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IGetArticlesByIdRequest, IGetArticlesByIdResponse, IGetArticlesByKeywordRequest, IGetArticlesByKeywordResponse } from '../interfaces/IArticles';
-import { Observable, delay, of } from 'rxjs';
+import { Observable, delay, of, switchMap } from 'rxjs';
 import { MockArticlesResponse } from '../mockdata/mock-articles-view';
 import { HttpClient } from '@angular/common/http';
 import { ApiOptionsService } from './api-options.service';
@@ -17,12 +17,20 @@ export class ApiService {
 
   getArticlesByKeyword(request: IGetArticlesByKeywordRequest):Observable<IGetArticlesByKeywordResponse>{
     var url = this.apiOptions.endpoints.articles + this.apiOptions.articles.getArticlesByKeyword;
-    return this.httpClient.post<IGetArticlesByKeywordResponse>(url,request);
+    // add some delay, for dev test
+    return of(null).pipe(
+      delay(500), // Adjust the delay time as needed (in milliseconds)
+      switchMap(() => this.httpClient.post<IGetArticlesByKeywordResponse>(url,request))
+    );
     // return of(MockArticlesResponse).pipe(delay(500));
   }
   getArticlesById(request: IGetArticlesByIdRequest):Observable<IGetArticlesByIdResponse>{
     var url = this.apiOptions.endpoints.articles + this.apiOptions.articles.getArticlesById;
-    return this.httpClient.post<IGetArticlesByIdResponse>(url,request);
+    // add some delay, for dev test
+    return of(null).pipe(
+      delay(500),
+      switchMap(() => this.httpClient.post<IGetArticlesByIdResponse>(url,request))
+    );
     // return of(MockArticlesResponse).pipe(delay(500));
   }
 

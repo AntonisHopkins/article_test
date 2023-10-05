@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, Subscription, debounceTime } from 'rxjs';
+import { Subject, Subscription, debounceTime, delay } from 'rxjs';
 import { IGetArticlesByKeywordRequest, IArticle, IArticleView } from 'src/app/interfaces/IArticles';
 import MockArticlesView from 'src/app/mockdata/mock-articles-view';
 import { GenericModalComponent } from 'src/app/modals/generic-modal/generic-modal.component';
@@ -17,7 +17,7 @@ export class CenterComponent implements OnInit, OnDestroy {
   search$: Subject<string> = new Subject<string>();
   subscription$: Subscription = new Subscription();
   articles: IArticleView[] = MockArticlesView;
-  keyword: string = "Test";
+  keyword: string = "";
   loading: boolean = true;
   routeIsActive: boolean = false;
 

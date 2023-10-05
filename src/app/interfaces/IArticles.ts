@@ -35,7 +35,7 @@ export interface IArticleIncludedAttributes
 
 export interface IArticleView extends IArticle{
   publishDateStr: string;
-  publisher: string;
+  writer: string;
 }
 
 export interface IGetArticlesByKeywordRequest {

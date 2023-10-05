@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PlaceholderComponent } from './components/placeholder/placeholder.component';
 import { ArticleComponent } from './components/center/article/article.component';
 import { Strings } from './types/strings';
+import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: Strings.ArticleRoute, component: ArticleComponent }
+  { path: Strings.ArticleRoute, component: ArticleComponent },
+  { path: Strings.LoginRoute, component: LoginComponent },
+  { path: Strings.NotFoundRoute, component: NotFoundComponent }
 ];
 
 @NgModule({

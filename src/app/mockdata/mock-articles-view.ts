@@ -15,7 +15,10 @@ const MockArticles: IArticle[] = [
     id: "1",
     attributes: {
       title: "Batman new movie in 2024?!",
-      body: `<script>alert('busted');</script>Matt Reeves’ “<b>The Batman</b>” isn’t a superhero movie. Not really. All the trappings are there: the Batmobile, the rugged suit, the gadgets courtesy of trusty butler Alfred. And of course, at the center, is the Caped Crusader himself: brooding, tormented, seeking his own brand of nighttime justice in a Gotham City that’s spiraling into squalor and decay.`,
+      body: `<script>alert('busted');</script><a href="/cast-and-crew/matt-reeves">Matt Reeves</a>’ 
+      “The Batman” isn’t a superhero movie. Not really. All the trappings are there: the Batmobile, the rugged suit, the gadgets courtesy of trusty butler Alfred. And of course, at the center, is the Caped Crusader himself: brooding, tormented, seeking his own brand of nighttime justice in a Gotham City that’s spiraling into squalor and decay.
+      <p class="pt-5">But in Reeves’ confident hands, everything is breathtakingly alive and new. As director and co-writer, 
+      he’s taken what might seem like a familiar tale and made it epic, even operatic. His “<a href="/reviews/batman-1989">Batman</a>” is more akin to a gritty, ‘70s crime drama than a soaring and transporting blockbuster. With its kinetic, unpredictable action, it calls to mind films like “<a href="/reviews/the-warriors-1979">The Warriors</a>” as well as one of the greatest of them all in the genre, “<a href="/reviews/the-french-connection-1971">The French Connection</a>.” And with a series of high-profile murders driving the plot, it sometimes feels as if the Zodiac killer is terrorizing the citizens of Gotham.</p>`,
       created: "2015-05-22T14:56:29.000Z",
       updated: "2015-05-22T14:56:28.000Z",
     },
@@ -88,7 +91,7 @@ let MockArticlesView: IArticleView[] = []
 MockArticles.forEach(x => {
   MockArticlesView.push({...x, 
     publishDateStr: new Date(x.attributes.created).toLocaleString(), 
-    publisher: MockIncluded[0].attributes.name})
+    writer: MockIncluded[0].attributes.name})
 });
 const MockArticlesResponse: IGetArticlesByKeywordResponse = 
 {
