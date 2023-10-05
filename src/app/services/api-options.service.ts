@@ -12,7 +12,7 @@ export class ApiOptionsService {
 
   articles = {
     getArticlesByKeyword: "getArticlesByKeyword",
-    getArticlesById: "getArticlesById",
+    getArticleById: "getArticleById",
     getArticles: "getArticles",
   }
 

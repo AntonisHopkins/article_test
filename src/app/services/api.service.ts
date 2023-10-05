@@ -16,6 +16,7 @@ export class ApiService {
     ) { }
 
   getArticlesByKeyword(request: IGetArticlesByKeywordRequest):Observable<IGetArticlesByKeywordResponse>{
+    // url creation depends if the endpoint follows crud logic i need to add in uri the :id for example
     var url = this.apiOptions.endpoints.articles + this.apiOptions.articles.getArticlesByKeyword;
     // add some delay, for dev test
     return of(null).pipe(
@@ -25,7 +26,8 @@ export class ApiService {
     // return of(MockArticlesResponse).pipe(delay(500));
   }
   getArticlesById(request: IGetArticlesByIdRequest):Observable<IGetArticlesByIdResponse>{
-    var url = this.apiOptions.endpoints.articles + this.apiOptions.articles.getArticlesById;
+    // url creation depends if the endpoint follows crud logic i need to add in uri the :id for example
+    var url = this.apiOptions.endpoints.articles + this.apiOptions.articles.getArticleById;
     // add some delay, for dev test
     return of(null).pipe(
       delay(500),
