@@ -4,7 +4,7 @@
     <div class="row mt-5">
       <span>Writer: {{article.writer}} | {{article.publishDateStr}}</span>
     </div>
-      <img class="center mt-2" src="{{article.thumbnail}}" >
+      <img class="center mt-2" title="{{article.attributes.title}}" src="{{article.thumbnail}}" >
     <span class="col-10 mt-5 d-inline-block article-description">
       <span [appSafeHtml]="article.attributes.body"></span> 
     </span>
